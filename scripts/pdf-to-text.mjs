@@ -12,6 +12,45 @@ fs.mkdirSync(outDir, { recursive: true });
 // "NAK 19-1 2012(v1.0) 전자기록생산시스템 ....pdf" -> { id: "19-1", year, version, title }
 const NAME_RE = /^NAK\s+([\d-]+)\s+(\d{4})\(v([\d.]+)\)\s+(.+?)(?:\s*\(\d+\))?\.pdf$/i;
 
+// From archives.go.kr 기록물관리 표준 현황 페이지 분류 (2026-07 기준, 사용자 제공).
+const CATEGORY_MAP = {
+  'NAK-1': '서식',
+  'NAK-9': '관리주체별',
+  'NAK-10': '관리주체별',
+  'NAK-15': '관리주체별',
+  'NAK-18': '관리주체별',
+  'NAK-17': '기록유형별',
+  'NAK-35': '기록유형별',
+  'NAK-8': '업무절차별 · 메타데이터',
+  'NAK-4': '업무절차별 · 기록관리기준표/보존기간',
+  'NAK-16-1': '업무절차별 · 공개활용',
+  'NAK-16-2': '업무절차별 · 공개활용',
+  'NAK-21': '업무절차별 · 공개활용',
+  'NAK-13': '업무절차별 · 정리기술/디지털화',
+  'NAK-26': '업무절차별 · 정리기술/디지털화',
+  'NAK-5-1': '업무절차별 · 평가폐기',
+  'NAK-5-2': '업무절차별 · 평가폐기',
+  'NAK-2-1': '재난관리',
+  'NAK-2-2': '재난관리',
+  'NAK-38': '재난관리',
+  'NAK-11': '보존환경',
+  'NAK-24': '보존환경',
+  'NAK-25': '복원/상태검사',
+  'NAK-12': '매체/포맷',
+  'NAK-30': '매체/포맷',
+  'NAK-31-1': '매체/포맷',
+  'NAK-31-2': '매체/포맷',
+  'NAK-37': '매체/포맷',
+  'NAK-6': '시스템 · 기능요건',
+  'NAK-7': '시스템 · 기능요건',
+  'NAK-19-1': '시스템 · 기능요건',
+  'NAK-19-2': '시스템 · 기능요건',
+  'NAK-19-3': '시스템 · 기능요건',
+  'NAK-20': '시스템 · 기능요건',
+  'NAK-32-1': '시스템 · 기술규격',
+};
+const UNCATEGORIZED = '미분류';
+
 function collapseSpacedLatin(text) {
   // PDF extraction sometimes emits "N a t i o n a l" for Latin runs (per-glyph
   // positioning). Squeeze 3+ single-letter tokens back into one word.
@@ -85,7 +124,8 @@ for (const file of files) {
     path.join(outDir, outFile),
     `# ${title}\n\nNAK ${match ? match[1] : ''} · ${year ?? ''} · v${version ?? ''}\n\n${text}\n`,
   );
-  manifest.push({ id, title, year, version, sourceFile: file, textFile: outFile, pages: pages.length });
+  const category = CATEGORY_MAP[id] ?? UNCATEGORIZED;
+  manifest.push({ id, title, year, version, category, sourceFile: file, textFile: outFile, pages: pages.length });
   console.log(`${pages.length} pages, ${text.length} chars`);
 }
 

@@ -46,9 +46,21 @@ export interface QuizStats {
   lastAnsweredAt: number;
 }
 
+export interface BookmarkedQuestion {
+  id: string;
+  type: 'OX' | 'FILL_BLANK';
+  prompt: string;
+  answer?: boolean;
+  answers?: string[];
+  explanation?: string;
+  sourceLabel?: string;
+  savedAt: number;
+}
+
 export interface AppData {
   version: 1;
   categories: Category[];
   questions: Question[];
   stats: Record<string, QuizStats>;
+  bookmarks: BookmarkedQuestion[];
 }

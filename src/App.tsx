@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import ManagePage from './pages/ManagePage';
 import QuizPage from './pages/QuizPage';
 import RandomQuizPage from './pages/RandomQuizPage';
+import SavedQuestionsPage from './pages/SavedQuestionsPage';
 import './App.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/manage/:categoryId" element={<ManagePage />} />
         <Route path="/quiz/:categoryId" element={<QuizPage />} />
         <Route path="/random-quiz" element={<RandomQuizPage />} />
+        <Route path="/saved" element={<SavedQuestionsPage />} />
       </Routes>
     </div>
   );

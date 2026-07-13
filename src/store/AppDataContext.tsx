@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react';
-import type { AppData, Category, NewQuestion, Question, QuizStats } from '../types/quiz';
+import type { AppData, BookmarkedQuestion, Category, NewQuestion, Question, QuizStats } from '../types/quiz';
 import { loadData, saveData } from './storage';
 
 interface AppDataContextValue {
@@ -13,6 +13,8 @@ interface AppDataContextValue {
   deleteQuestion: (id: string) => void;
   recordAnswer: (questionId: string, correct: boolean) => void;
   replaceAll: (next: AppData) => void;
+  addBookmark: (bookmark: Omit<BookmarkedQuestion, 'id' | 'savedAt'>) => BookmarkedQuestion;
+  removeBookmark: (id: string) => void;
 }
 
 const AppDataContext = createContext<AppDataContextValue | null>(null);
@@ -125,6 +127,22 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
     [update],
   );
 
+  const addBookmark = useCallback(
+    (bookmark: Omit<BookmarkedQuestion, 'id' | 'savedAt'>) => {
+      const full: BookmarkedQuestion = { ...bookmark, id: uid(), savedAt: Date.now() };
+      update((prev) => ({ ...prev, bookmarks: [...prev.bookmarks, full] }));
+      return full;
+    },
+    [update],
+  );
+
+  const removeBookmark = useCallback(
+    (id: string) => {
+      update((prev) => ({ ...prev, bookmarks: prev.bookmarks.filter((b) => b.id !== id) }));
+    },
+    [update],
+  );
+
   const value = useMemo<AppDataContextValue>(
     () => ({
       data,
@@ -137,6 +155,8 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       deleteQuestion,
       recordAnswer,
       replaceAll,
+      addBookmark,
+      removeBookmark,
     }),
     [
       data,
@@ -149,6 +169,8 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       deleteQuestion,
       recordAnswer,
       replaceAll,
+      addBookmark,
+      removeBookmark,
     ],
   );
 

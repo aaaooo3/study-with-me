@@ -50,6 +50,12 @@ export default function HomePage() {
         </Link>
       </div>
 
+      {data.bookmarks.length > 0 && (
+        <Link to="/saved" className="btn btn-block">
+          ⭐ 저장한 문제 다시보기 ({data.bookmarks.length})
+        </Link>
+      )}
+
       {data.categories.length === 0 ? (
         <div className="empty-state">
           <p>내가 직접 고른 문제만 모은 카테고리를 만들고 싶다면:</p>

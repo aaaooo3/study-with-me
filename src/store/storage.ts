@@ -2,11 +2,13 @@ import type { AppData } from '../types/quiz';
 
 const STORAGE_KEY = 'archives-quiz-data-v1';
 
+function emptyData(): AppData {
+  return { version: 1, categories: [], questions: [], stats: {}, bookmarks: [] };
+}
+
 export function loadData(): AppData {
   const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) {
-    return { version: 1, categories: [], questions: [], stats: {} };
-  }
+  if (!raw) return emptyData();
   try {
     const parsed = JSON.parse(raw) as AppData;
     return {
@@ -14,9 +16,10 @@ export function loadData(): AppData {
       categories: parsed.categories ?? [],
       questions: parsed.questions ?? [],
       stats: parsed.stats ?? {},
+      bookmarks: parsed.bookmarks ?? [],
     };
   } catch {
-    return { version: 1, categories: [], questions: [], stats: {} };
+    return emptyData();
   }
 }
 
@@ -45,5 +48,6 @@ export function parseImportedFile(text: string): AppData {
     categories: parsed.categories,
     questions: parsed.questions,
     stats: parsed.stats ?? {},
+    bookmarks: parsed.bookmarks ?? [],
   };
 }
