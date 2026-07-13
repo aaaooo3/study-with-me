@@ -4,6 +4,7 @@ import { useAppData } from '../store/AppDataContext';
 import type { Question, QuestionType } from '../types/quiz';
 import { exportDataAsFile, parseImportedFile } from '../store/storage';
 import QuestionForm from '../components/QuestionForm';
+import AutoGenerate from '../components/AutoGenerate';
 
 export default function ManagePage() {
   const { categoryId } = useParams();
@@ -13,6 +14,7 @@ export default function ManagePage() {
   const [newCategoryName, setNewCategoryName] = useState('');
   const [editingQuestion, setEditingQuestion] = useState<Question | null>(null);
   const [showForm, setShowForm] = useState(false);
+  const [showAutoGenerate, setShowAutoGenerate] = useState(false);
 
   if (!categoryId) {
     const handleAddCategory = () => {
@@ -157,16 +159,26 @@ export default function ManagePage() {
         </Link>
       </div>
 
-      {!showForm && (
-        <button
-          className="btn btn-primary btn-block"
-          onClick={() => {
-            setEditingQuestion(null);
-            setShowForm(true);
-          }}
-        >
-          + 문제 추가
-        </button>
+      {!showForm && !showAutoGenerate && (
+        <div className="button-row">
+          <button
+            className="btn btn-primary"
+            style={{ flex: 1 }}
+            onClick={() => {
+              setEditingQuestion(null);
+              setShowForm(true);
+            }}
+          >
+            + 문제 직접 추가
+          </button>
+          <button
+            className="btn"
+            style={{ flex: 1 }}
+            onClick={() => setShowAutoGenerate(true)}
+          >
+            지침에서 자동 생성
+          </button>
+        </div>
       )}
 
       {showForm && (
@@ -178,6 +190,10 @@ export default function ManagePage() {
             setEditingQuestion(null);
           }}
         />
+      )}
+
+      {showAutoGenerate && (
+        <AutoGenerate categoryId={category.id} onDone={() => setShowAutoGenerate(false)} />
       )}
 
       <div className="question-list">

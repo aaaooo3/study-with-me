@@ -8,6 +8,7 @@ interface AppDataContextValue {
   updateCategory: (id: string, patch: Partial<Pick<Category, 'name' | 'description'>>) => void;
   deleteCategory: (id: string) => void;
   addQuestion: (question: NewQuestion) => Question;
+  addQuestions: (questions: NewQuestion[]) => Question[];
   updateQuestion: (id: string, patch: Partial<Question>) => void;
   deleteQuestion: (id: string) => void;
   recordAnswer: (questionId: string, correct: boolean) => void;
@@ -23,91 +24,105 @@ function uid(): string {
 export function AppDataProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<AppData>(() => loadData());
 
-  const persist = useCallback((next: AppData) => {
-    setData(next);
-    saveData(next);
+  const update = useCallback((updater: (prev: AppData) => AppData) => {
+    setData((prev) => {
+      const next = updater(prev);
+      saveData(next);
+      return next;
+    });
   }, []);
 
   const addCategory = useCallback(
     (name: string, description?: string) => {
       const category: Category = { id: uid(), name, description, createdAt: Date.now() };
-      persist({ ...data, categories: [...data.categories, category] });
+      update((prev) => ({ ...prev, categories: [...prev.categories, category] }));
       return category;
     },
-    [data, persist],
+    [update],
   );
 
   const updateCategory = useCallback(
     (id: string, patch: Partial<Pick<Category, 'name' | 'description'>>) => {
-      persist({
-        ...data,
-        categories: data.categories.map((c) => (c.id === id ? { ...c, ...patch } : c)),
-      });
+      update((prev) => ({
+        ...prev,
+        categories: prev.categories.map((c) => (c.id === id ? { ...c, ...patch } : c)),
+      }));
     },
-    [data, persist],
+    [update],
   );
 
   const deleteCategory = useCallback(
     (id: string) => {
-      persist({
-        ...data,
-        categories: data.categories.filter((c) => c.id !== id),
-        questions: data.questions.filter((q) => q.categoryId !== id),
-      });
+      update((prev) => ({
+        ...prev,
+        categories: prev.categories.filter((c) => c.id !== id),
+        questions: prev.questions.filter((q) => q.categoryId !== id),
+      }));
     },
-    [data, persist],
+    [update],
   );
 
   const addQuestion = useCallback(
     (question: NewQuestion) => {
       const full = { ...question, id: uid(), createdAt: Date.now() } as Question;
-      persist({ ...data, questions: [...data.questions, full] });
+      update((prev) => ({ ...prev, questions: [...prev.questions, full] }));
       return full;
     },
-    [data, persist],
+    [update],
+  );
+
+  const addQuestions = useCallback(
+    (questions: NewQuestion[]) => {
+      const fulls = questions.map((q) => ({ ...q, id: uid(), createdAt: Date.now() }) as Question);
+      update((prev) => ({ ...prev, questions: [...prev.questions, ...fulls] }));
+      return fulls;
+    },
+    [update],
   );
 
   const updateQuestion = useCallback(
     (id: string, patch: Partial<Question>) => {
-      persist({
-        ...data,
-        questions: data.questions.map((q) => (q.id === id ? ({ ...q, ...patch } as Question) : q)),
-      });
+      update((prev) => ({
+        ...prev,
+        questions: prev.questions.map((q) => (q.id === id ? ({ ...q, ...patch } as Question) : q)),
+      }));
     },
-    [data, persist],
+    [update],
   );
 
   const deleteQuestion = useCallback(
     (id: string) => {
-      persist({ ...data, questions: data.questions.filter((q) => q.id !== id) });
+      update((prev) => ({ ...prev, questions: prev.questions.filter((q) => q.id !== id) }));
     },
-    [data, persist],
+    [update],
   );
 
   const recordAnswer = useCallback(
     (questionId: string, correct: boolean) => {
-      const prev: QuizStats = data.stats[questionId] ?? {
-        questionId,
-        correctCount: 0,
-        wrongCount: 0,
-        lastAnsweredAt: 0,
-      };
-      const nextStat: QuizStats = {
-        ...prev,
-        correctCount: prev.correctCount + (correct ? 1 : 0),
-        wrongCount: prev.wrongCount + (correct ? 0 : 1),
-        lastAnsweredAt: Date.now(),
-      };
-      persist({ ...data, stats: { ...data.stats, [questionId]: nextStat } });
+      update((prev) => {
+        const prevStat: QuizStats = prev.stats[questionId] ?? {
+          questionId,
+          correctCount: 0,
+          wrongCount: 0,
+          lastAnsweredAt: 0,
+        };
+        const nextStat: QuizStats = {
+          ...prevStat,
+          correctCount: prevStat.correctCount + (correct ? 1 : 0),
+          wrongCount: prevStat.wrongCount + (correct ? 0 : 1),
+          lastAnsweredAt: Date.now(),
+        };
+        return { ...prev, stats: { ...prev.stats, [questionId]: nextStat } };
+      });
     },
-    [data, persist],
+    [update],
   );
 
   const replaceAll = useCallback(
     (next: AppData) => {
-      persist(next);
+      update(() => next);
     },
-    [persist],
+    [update],
   );
 
   const value = useMemo<AppDataContextValue>(
@@ -117,12 +132,24 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       updateCategory,
       deleteCategory,
       addQuestion,
+      addQuestions,
       updateQuestion,
       deleteQuestion,
       recordAnswer,
       replaceAll,
     }),
-    [data, addCategory, updateCategory, deleteCategory, addQuestion, updateQuestion, deleteQuestion, recordAnswer, replaceAll],
+    [
+      data,
+      addCategory,
+      updateCategory,
+      deleteCategory,
+      addQuestion,
+      addQuestions,
+      updateQuestion,
+      deleteQuestion,
+      recordAnswer,
+      replaceAll,
+    ],
   );
 
   return <AppDataContext.Provider value={value}>{children}</AppDataContext.Provider>;
