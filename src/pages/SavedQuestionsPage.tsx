@@ -166,6 +166,9 @@ export default function SavedQuestionsPage() {
                 <div>정답: {(current.answers ?? []).join(' / ')}</div>
               )}
               {current.explanation && <div className="quiz-explanation">{current.explanation}</div>}
+              {!isCorrectAnswer(current, response) && current.sourceLabel && (
+                <div className="quiz-explanation">출처: {current.sourceLabel}</div>
+              )}
             </div>
           )}
 
