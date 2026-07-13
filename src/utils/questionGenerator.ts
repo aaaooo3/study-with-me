@@ -47,8 +47,18 @@ const ANTONYM_PAIRS: [string, string][] = [
   ['원본', '사본'],
 ];
 
+// The converted guideline files are structured markdown; strip the markup so
+// heading lines don't leak into prompts and bullets/callouts read as prose.
+function stripMarkdown(text: string): string {
+  return text
+    .replace(/^#{1,6} .*$/gm, ' ')
+    .replace(/^> ?/gm, '')
+    .replace(/^- /gm, '')
+    .replace(/\*\*/g, '');
+}
+
 function splitSentences(text: string): string[] {
-  const flattened = text.replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ');
+  const flattened = stripMarkdown(text).replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ');
   return flattened
     .split(/(?<=[가-힣])\.\s+/)
     .map((s) => s.trim())
