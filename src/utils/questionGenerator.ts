@@ -7,6 +7,7 @@ export interface DraftQuestion {
   explanation?: string;
   source: string;
   score: number;
+  sourceLabel?: string;
 }
 
 const NOISE_KEYWORDS = [
@@ -147,7 +148,7 @@ function tryOx(sentence: string, source: string, usedForFillBlank: boolean): Dra
   return null;
 }
 
-export function generateDrafts(text: string, maxDrafts = 80): DraftQuestion[] {
+export function generateDrafts(text: string, maxDrafts = 80, sourceLabel?: string): DraftQuestion[] {
   const sentences = splitSentences(text).filter(isCandidate);
   const seen = new Set<string>();
   const drafts: DraftQuestion[] = [];
@@ -164,5 +165,9 @@ export function generateDrafts(text: string, maxDrafts = 80): DraftQuestion[] {
   }
 
   drafts.sort((a, b) => b.score - a.score);
-  return drafts.slice(0, maxDrafts);
+  const picked = drafts.slice(0, maxDrafts);
+  if (sourceLabel) {
+    for (const d of picked) d.sourceLabel = sourceLabel;
+  }
+  return picked;
 }

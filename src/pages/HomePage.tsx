@@ -38,10 +38,22 @@ export default function HomePage() {
         <h1>기록원 지침 퀴즈</h1>
       </div>
 
+      <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <div>
+          <strong>🎲 바로 랜덤 퀴즈</strong>
+          <div className="category-meta">
+            카테고리 설정 없이, 지침 34종에서 계속 랜덤으로 문제를 만들어서 보여줘요.
+          </div>
+        </div>
+        <Link to="/random-quiz" className="btn btn-primary btn-block">
+          지금 시작
+        </Link>
+      </div>
+
       {data.categories.length === 0 ? (
         <div className="empty-state">
-          <p>아직 등록된 지침 카테고리가 없어요.</p>
-          <Link to="/manage" className="btn btn-primary">
+          <p>내가 직접 고른 문제만 모은 카테고리를 만들고 싶다면:</p>
+          <Link to="/manage" className="btn">
             지침 카테고리 만들기
           </Link>
         </div>
@@ -49,7 +61,7 @@ export default function HomePage() {
         <>
           <div className="card card-row">
             <div>
-              <strong>전체 문제 {totalQuestions}개</strong>
+              <strong>내 카테고리 문제 {totalQuestions}개</strong>
               <div className="category-meta">{data.categories.length}개 카테고리</div>
             </div>
             {totalQuestions > 0 && (
