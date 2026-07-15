@@ -21,7 +21,16 @@ const NOISE_KEYWORDS = [
   '심의사업',
 ];
 
-const NUMBER_UNIT_RE = /\d+\s?(?:년|개월|일|시간|건|부|점|퍼센트|%|차)/;
+// Document-history narrative ("2013년 2차 개정 시에는…", "…심의를 거쳐
+// 제정되었다") — real body text in some standards (especially NAK-1's 서식
+// examples) but useless as study material.
+const META_NARRATIVE_RE =
+  /\d\s*차\s*개정|제정\s*시에는|개정\s*시에는|개정에서는|제정되었|개정되었|고시\s*제\s*\d|이\s*표준의\s*열람|의견\s*또는\s*질|심의를\s*거쳐|유지[․‧·\s]*관리한다/;
+
+// 1–3 digit numbers only: 4-digit years ("2009년") are announcement dates,
+// not the retention periods (30년, 5년…) worth memorizing. 차 (1차/2차) is
+// likewise revision-history vocabulary.
+const NUMBER_UNIT_RE = /(?<!\d)\d{1,3}\s?(?:년|개월|일|시간|건|부|점|퍼센트|%)/;
 const QUOTED_TERM_RE = /[“「『]([^”」』]{2,20})[”」』]/;
 
 const ANTONYM_PAIRS: [string, string][] = [
@@ -77,6 +86,7 @@ function hangulRatio(sentence: string): number {
 function isCandidate(sentence: string): boolean {
   if (sentence.length < 20 || sentence.length > 220) return false;
   if (isNoise(sentence)) return false;
+  if (META_NARRATIVE_RE.test(sentence)) return false;
   if (hangulRatio(sentence) < 0.4) return false;
   return true;
 }
