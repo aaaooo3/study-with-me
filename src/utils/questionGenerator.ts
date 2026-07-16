@@ -84,12 +84,23 @@ function stripMarkdown(text: string): string {
 }
 
 function splitSentences(text: string): string[] {
-  const flattened = stripMarkdown(text).replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ');
+  let flattened = stripMarkdown(text).replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ');
+  // Some sentences run together with no space after the period ("있다.재난…").
+  // Insert one after a period that follows a sentence-ending syllable and is
+  // immediately followed by Hangul, so the split below catches it. The
+  // syllable guard keeps "3.7" / "제2.1항" intact.
+  flattened = flattened.replace(/(?<=[다음됨함임략])\.(?=[가-힣])/g, '. ');
   return flattened
-    .split(/(?<=[가-힣])\.\s+/)
+    .split(/(?<=[가-힣)”」])\.\s+/)
     .map((s) => s.trim())
     .filter(Boolean);
 }
+
+// Sentences that open with a reference to something in the previous sentence
+// ("여기에는…", "이는…", "위의…") are meaningless once pulled out on their own,
+// so they make unanswerable quiz prompts. Reject them as candidates.
+const ANAPHORA_START =
+  /^(?:여기|이는|이것|그것|이러한|그러한|이와|그와|이에|그에|이때|이 경우|그 경우|이 때|위\s|위의|위에서|앞서|앞의|아래|상기|해당\s|동\s|그러나|그러므로|따라서|또한|또,|반면|한편|다만,?\s|이를|그를|이러|그리고)/;
 
 function isNoise(sentence: string): boolean {
   return NOISE_KEYWORDS.some((k) => sentence.includes(k));
@@ -104,6 +115,7 @@ function isCandidate(sentence: string): boolean {
   if (sentence.length < 20 || sentence.length > 220) return false;
   if (isNoise(sentence)) return false;
   if (META_NARRATIVE_RE.test(sentence)) return false;
+  if (ANAPHORA_START.test(sentence)) return false;
   if (hangulRatio(sentence) < 0.4) return false;
   return true;
 }
