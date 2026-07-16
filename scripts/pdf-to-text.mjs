@@ -398,10 +398,25 @@ for (const file of files) {
     path.join(outDir, outFile),
     `# ${title}\n\n> NAK ${match ? match[1] : ''} · ${year ?? ''} · v${version ?? ''} · ${category}\n\n${text}\n`,
   );
-  manifest.push({ id, title, year, version, category, sourceFile: file, textFile: outFile, pages: pages.length });
+  manifest.push({ id, title, type: '지침', year, version, category, sourceFile: file, textFile: outFile, pages: pages.length });
   console.log(`${pages.length} pages, ${text.length} chars`);
 }
 
-manifest.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
-fs.writeFileSync(path.join(outDir, 'index.json'), JSON.stringify(manifest, null, 2));
-console.log(`\nWrote ${manifest.length} text files + index.json to ${outDir}`);
+// Merge into the shared manifest, keeping non-지침 rows (e.g. laws produced by
+// law-to-text.mjs) so the two generators can run in any order.
+const indexPath = path.join(outDir, 'index.json');
+let existing = [];
+if (fs.existsSync(indexPath)) {
+  try {
+    existing = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+  } catch {
+    existing = [];
+  }
+}
+const merged = existing.filter((e) => (e.type ?? '지침') !== '지침').concat(manifest);
+merged.sort((a, b) => {
+  if ((a.type ?? '지침') !== (b.type ?? '지침')) return (a.type ?? '지침') < (b.type ?? '지침') ? -1 : 1;
+  return a.id.localeCompare(b.id, undefined, { numeric: true });
+});
+fs.writeFileSync(indexPath, JSON.stringify(merged, null, 2));
+console.log(`\nWrote ${manifest.length} guideline files, merged into index.json (${merged.length} total).`);

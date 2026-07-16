@@ -1,13 +1,15 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { generateDrafts, type DraftQuestion } from '../utils/questionGenerator';
-import type { GuidelineTextEntry } from '../types/guideline';
+import type { GuidelineTextEntry, SourceType } from '../types/guideline';
 import { shuffle } from '../utils/shuffle';
 import { useAppData } from '../store/AppDataContext';
 
 const BATCH_SIZE = 25;
 const LOW_WATER_MARK = 5;
 const ALL_CATEGORIES = '전체';
+const ALL_TYPES = '전체';
+type TypeFilter = typeof ALL_TYPES | SourceType;
 
 function isCorrectAnswer(draft: DraftQuestion, response: unknown): boolean {
   if (draft.type === 'OX') return response === draft.answer;
@@ -18,6 +20,7 @@ function isCorrectAnswer(draft: DraftQuestion, response: unknown): boolean {
 export default function RandomQuizPage() {
   const { data, addBookmark, removeBookmark } = useAppData();
   const [manifest, setManifest] = useState<GuidelineTextEntry[]>([]);
+  const [sourceType, setSourceType] = useState<TypeFilter>(ALL_TYPES);
   const [category, setCategory] = useState(ALL_CATEGORIES);
   const [queue, setQueue] = useState<DraftQuestion[]>([]);
   const [index, setIndex] = useState(0);
@@ -37,14 +40,19 @@ export default function RandomQuizPage() {
       .catch(() => setError('지침 목록을 불러오지 못했어요.'));
   }, []);
 
+  const byType = useMemo(
+    () => (sourceType === ALL_TYPES ? manifest : manifest.filter((e) => e.type === sourceType)),
+    [manifest, sourceType],
+  );
+
   const categories = useMemo(() => {
-    const set = new Set(manifest.map((e) => e.category));
+    const set = new Set(byType.map((e) => e.category));
     return [ALL_CATEGORIES, ...Array.from(set).sort()];
-  }, [manifest]);
+  }, [byType]);
 
   const eligible = useMemo(
-    () => (category === ALL_CATEGORIES ? manifest : manifest.filter((e) => e.category === category)),
-    [manifest, category],
+    () => (category === ALL_CATEGORIES ? byType : byType.filter((e) => e.category === category)),
+    [byType, category],
   );
 
   const appendMore = async (list: GuidelineTextEntry[]) => {
@@ -59,7 +67,10 @@ export default function RandomQuizPage() {
 
       const res = await fetch(`${import.meta.env.BASE_URL}guideline-texts/${entry.textFile}`);
       const text = await res.text();
-      const drafts = shuffle(generateDrafts(text, BATCH_SIZE, `${entry.id} · ${entry.title}`));
+      // Laws already carry their full name in the title; guidelines need the
+      // NAK number prefixed since their title omits it.
+      const label = entry.type === '법령' ? entry.title : `${entry.id} · ${entry.title}`;
+      const drafts = shuffle(generateDrafts(text, BATCH_SIZE, label));
       setQueue((prev) => [...prev, ...drafts]);
     } catch {
       setError('문제를 생성하지 못했어요. 잠시 후 다시 시도해주세요.');
@@ -95,9 +106,17 @@ export default function RandomQuizPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index, queue.length, eligible]);
 
+  const handleTypeChange = (next: TypeFilter) => {
+    setSourceType(next);
+    setCategory(ALL_CATEGORIES);
+    const list = next === ALL_TYPES ? manifest : manifest.filter((e) => e.type === next);
+    resetAndReload(list);
+  };
+
   const handleCategoryChange = (next: string) => {
     setCategory(next);
-    const list = next === ALL_CATEGORIES ? manifest : manifest.filter((e) => e.category === next);
+    const scoped = sourceType === ALL_TYPES ? manifest : manifest.filter((e) => e.type === sourceType);
+    const list = next === ALL_CATEGORIES ? scoped : scoped.filter((e) => e.category === next);
     resetAndReload(list);
   };
 
@@ -160,6 +179,21 @@ export default function RandomQuizPage() {
         <Link to="/" className="back-link">
           홈
         </Link>
+      </div>
+
+      <div className="field">
+        <label>유형</label>
+        <div className="type-tabs">
+          {([ALL_TYPES, '지침', '법령'] as TypeFilter[]).map((t) => (
+            <div
+              key={t}
+              className={`type-tab ${sourceType === t ? 'active' : ''}`}
+              onClick={() => handleTypeChange(t)}
+            >
+              {t === ALL_TYPES ? '전체' : t}
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="field">

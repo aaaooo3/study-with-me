@@ -42,7 +42,8 @@ export default function HomePage() {
         <div>
           <strong>🎲 바로 랜덤 퀴즈</strong>
           <div className="category-meta">
-            카테고리 설정 없이, 지침 34종에서 계속 랜덤으로 문제를 만들어서 보여줘요.
+            카테고리 설정 없이, 국가기록원 지침·법령에서 계속 랜덤으로 문제를 만들어서 보여줘요.
+            (유형·카테고리로 범위 선택 가능)
           </div>
         </div>
         <Link to="/random-quiz" className="btn btn-primary btn-block">
