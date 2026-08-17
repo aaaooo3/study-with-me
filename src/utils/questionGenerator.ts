@@ -31,7 +31,13 @@ const META_NARRATIVE_RE =
 // not the retention periods (30년, 5년…) worth memorizing. 차 (1차/2차) is
 // likewise revision-history vocabulary.
 const NUMBER_UNIT_RE = /(?<!\d)\d{1,3}\s?(?:년|개월|일|시간|건|부|점|퍼센트|%)/;
-const QUOTED_TERM_RE = /[“「『]([^”」』]{2,20})[”」』]/;
+// Only curly double quotes “…” / 『…』 wrap *defined terms* ("전자기록물"이라
+// 함은…). The angle brackets 「…」/｢…｣ almost always wrap the name of another
+// statute or standard being cited — testing those is rote citation trivia, so
+// they are deliberately excluded from blanking.
+const DEFINED_TERM_RE = /[“『]([^”』]{2,20})[”』]/;
+// A term that is itself the name of a law/regulation/standard — never blank it.
+const LAW_NAME_RE = /(?:법|법률|령|규칙|규정|조례|훈령|예규|준칙|지침|표준|고시)$/;
 
 // Each rule: `re` locates a flippable span (capture group 1 is what gets
 // replaced by `to`, which may reference $1…). Rules are context-guarded so an
@@ -78,6 +84,9 @@ const ANTONYM_RULES: AntonymRule[] = [
 function stripMarkdown(text: string): string {
   return text
     .replace(/^#{1,6} .*$/gm, ' ')
+    // Drop the source metadata blockquote ("> NAK 4 · 2025 · …", "> 법령 · 시행
+    // 2025 …") entirely — it's citation info, not study material.
+    .replace(/^> ?(?:NAK|법령) ·.*$/gm, ' ')
     .replace(/^> ?/gm, '')
     .replace(/^- /gm, '')
     .replace(/\*\*/g, '');
@@ -136,12 +145,12 @@ function tryFillBlank(sentence: string, source: string): DraftQuestion | null {
     };
   }
 
-  const quotedMatch = sentence.match(QUOTED_TERM_RE);
-  if (quotedMatch) {
+  const quotedMatch = sentence.match(DEFINED_TERM_RE);
+  if (quotedMatch && !LAW_NAME_RE.test(quotedMatch[1])) {
     const token = quotedMatch[1];
     const full = quotedMatch[0];
     const idx = sentence.indexOf(full);
-    const prompt = sentence.slice(0, idx) + '「___」' + sentence.slice(idx + full.length);
+    const prompt = sentence.slice(0, idx) + '“___”' + sentence.slice(idx + full.length);
     return {
       draftId: crypto.randomUUID(),
       type: 'FILL_BLANK',
