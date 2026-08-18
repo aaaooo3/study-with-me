@@ -92,8 +92,23 @@ function stripMarkdown(text: string): string {
     .replace(/\*\*/g, '');
 }
 
+// Illustrative example content — "<예시1> 박정희의장 …", "보기 올바른 예)",
+// sample record listings — is concrete filler, not a rule worth memorizing.
+// A whole sentence carrying one of these markers is dropped; the softer
+// parenthetical clarifier "(예: 일반공공행정)" is merely stripped so the
+// surrounding definition survives.
+const EXAMPLE_MARKER = /예시|예제|＜예|<예|예＞|예>|(?:^|\s)보기(?:\s|\d)|올바른 예|잘못된 예|예\)/;
+
+function stripParentheticalExamples(text: string): string {
+  return text
+    .replace(/[(（]\s*예(?:시)?\s*[:：][^)）]*[)）]/g, '')
+    .replace(/[(（]\s*보기\s*\d*\s*[)）]/g, '');
+}
+
 function splitSentences(text: string): string[] {
-  let flattened = stripMarkdown(text).replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ');
+  let flattened = stripParentheticalExamples(stripMarkdown(text))
+    .replace(/\n+/g, ' ')
+    .replace(/\s{2,}/g, ' ');
   // Some sentences run together with no space after the period ("있다.재난…").
   // Insert one after a period that follows a sentence-ending syllable and is
   // immediately followed by Hangul, so the split below catches it. The
@@ -125,6 +140,7 @@ function isCandidate(sentence: string): boolean {
   if (isNoise(sentence)) return false;
   if (META_NARRATIVE_RE.test(sentence)) return false;
   if (ANAPHORA_START.test(sentence)) return false;
+  if (EXAMPLE_MARKER.test(sentence)) return false;
   if (hangulRatio(sentence) < 0.4) return false;
   return true;
 }
