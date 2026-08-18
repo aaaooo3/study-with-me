@@ -388,8 +388,14 @@ for (const file of files) {
 
   process.stdout.write(`extracting ${file} ... `);
   const pages = await extractPdf(path.join(srcDir, file));
+  // The running header appears as "NAK 21:2018(v1.1)" in some files and
+  // "NAK 21 2018(v1.1)" (space, no colon) in others — accept either, and a
+  // trailing page number that pdf.js glues on ("…(v1.1)26").
   const designationRe = match
-    ? new RegExp(`NAK\\s*${escapeRegex(match[1])}\\s*:\\s*${match[2]}\\s*\\(\\s*v${escapeRegex(match[3])}\\s*\\)`, 'g')
+    ? new RegExp(
+        `NAK\\s*${escapeRegex(match[1])}\\s*[: ]\\s*${match[2]}\\s*\\(\\s*v${escapeRegex(match[3])}\\s*\\)\\s*\\d{0,3}`,
+        'g',
+      )
     : null;
   const text = structureMarkdown(cleanText(pages, designationRe));
   const outFile = `${id}.md`;
