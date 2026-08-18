@@ -288,9 +288,13 @@ export default function RandomQuizPage() {
             </div>
           )}
 
-          {revealed && (
+          {revealed ? (
             <button className="btn btn-primary btn-block" onClick={goNext}>
               다음 문제
+            </button>
+          ) : (
+            <button className="btn btn-block" onClick={goNext}>
+              모르겠어요 · 건너뛰기 →
             </button>
           )}
 
