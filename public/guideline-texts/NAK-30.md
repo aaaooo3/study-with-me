@@ -21,7 +21,7 @@
 
 다음의 인용표준은 이 표준의 적용을 위해 필수적이다.
 발행연도가 표기된인용표준은 인용된 판만을 적용한다.
-발행연도가 표기되지 않은 인용표준은 2최신판(모든 개정내용을 포함)을 적용한다 ISO 19005-1:2005(PDF/A-1) - Document management Electronic documentfile format for long-term preservation, Part 1: Use of PDF 1.4 (PDF/A-1)
+발행연도가 표기되지 않은 인용표준은 최신판(모든 개정내용을 포함)을 적용한다 ISO 19005-1:2005(PDF/A-1) - Document management Electronic documentfile format for long-term preservation, Part 1: Use of PDF 1.4 (PDF/A-1)
 
 ### 2.3 다른 표준과의 연계
 
@@ -41,7 +41,7 @@
 
 **3.4** 적합성 수준(Conformance Level) 파일과 판독기가 반드시 준수해야 하는 제약사항과 요구사항들의 식별된 집합 [ISO 15930-4]
 
-**3.5** 파일 끝 표시(End-of-file marker) PDF 파일 끝을 표시하는 다섯 개의 문자열인 ‘%%EOF’ 4[ISO 19005-1:2005]
+**3.5** 파일 끝 표시(End-of-file marker) PDF 파일 끝을 표시하는 다섯 개의 문자열인 ‘%%EOF’ [ISO 19005-1:2005]
 
 **3.6** 판독기(reader) 파일을 적절하게 읽을 수 있고 처리할 수 있는 소프트웨어 응용프로그램 [ISO 15930-4]
 
@@ -57,7 +57,7 @@
 ## 4 표기법
 
 이 표준에서는 PDF 연산자, PDF 키워드, PDF 사전의 키 값과 이미 정의된이름은 진한 휴먼고딕체 폰트로 표기하였다.
-PDF 연산자의 피연산자(operand) 혹은 사전 키의 값들은 이탤릭(기울임) 휴먼고딕체 폰트로 표기하 5였다.
+PDF 연산자의 피연산자(operand) 혹은 사전 키의 값들은 이탤릭(기울임) 휴먼고딕체 폰트로 표기하 였다.
 보기 TR2 키에 대한Default 값 PDF Reference 3.1에 정의된 대로 PDF 파일의 구조를 기술하고 객체를 구분하는데 사용되는 토큰 문자는 진한 휴먼고딕체 폰트의 대문자로 표기하며 괄호에 삽입된 두 자리의 16진수 숫자와 접미사 "h"를 붙여 표기한다.
 보기 CARRIAGE RETURN (0Dh) 5 기술규격 개요 5.1일반사항 전자문서는 문서를 생산했던 애플리케이션이 더 이상 존재하지 않거나, 운영체제 또는 플랫폼 환경의 차이에 의해 원문의 모습을 볼 수 없거나, 심할 경우 파일 자체를 열어볼 수 없는 경우가 발생할 수 있다.
 이런 문제점을 해결하기 위해 해당 애플리케이션 버전의 변경이나 소멸에 영향 받지 않고 내용보기를 가능하게 하는 보존포맷이 필요하다.
@@ -65,7 +65,7 @@ PDF 연산자의 피연산자(operand) 혹은 사전 키의 값들은 이탤릭(
 다만, 문서의 장기보존에 위배될 가능성이 있는 일부 요소(암호화, 내장파일, LZW압축, 투명성, 멀티미디어, 자바스크립트)를 금지하여 사용한다.
 그리고 장기보존을 위해 필요한 부분(PDF/A를 위한 확장 스키마)을 추가하였다.
 PDF/A-1의 “A”는 기록물 즉 Archive를 나타내며, “1”은 인쇄가 가능한 모든 매체를 대상으로 하고 있다는 의미이다.
-그래서 동영상, 비디오, 오디오매체에는 적용이 불가능하다.1) 1) 동영상, 오디오, 3D 그래픽, JPEG-2000압축 등에 대한 보존포맷인 PDF/A-2는 PDF 1.7 버전을 기반으로 한다.(ISO 19005-2:2011) 6다음 사항은 기술규격 범위에서 제외한다 종이 또는 전자문서를 변환하는 특정 방법 ․ 기술적 디자인, 사용자인터페이스, 렌더링에 대한 구체적인 방법 ․ 저장 방법 및 저장 매체 ․ 필요한 컴퓨터 하드웨어 또는 운영체계
+그래서 동영상, 비디오, 오디오매체에는 적용이 불가능하다.1) 1) 동영상, 오디오, 3D 그래픽, JPEG-2000압축 등에 대한 보존포맷인 PDF/A-2는 PDF 1.7 버전을 기반으로 한다.(ISO 19005-2:2011) 다음 사항은 기술규격 범위에서 제외한다 종이 또는 전자문서를 변환하는 특정 방법 ․ 기술적 디자인, 사용자인터페이스, 렌더링에 대한 구체적인 방법 ․ 저장 방법 및 저장 매체 ․ 필요한 컴퓨터 하드웨어 또는 운영체계
 
 ### 5.2 적합성 수준
 
@@ -78,7 +78,7 @@ PDF/A-1의 “A”는 기록물 즉 Archive를 나타내며, “1”은 인쇄�
 ### 5.3 이 표준에 적용된 적합성 수준
 
 이 규격은 태그 붙은 PDF(6.8.2 참조)가 가지는 특성으로 인해 “논리적 구조(6.8 참조)”의 일부를 충족할 수 없으므로 적합성 B 수준으로 선정한다.
-7태그 붙은 PDF가 가지는 특성을 살펴보면 다음과 같다 기술규격에서 배재된 태그 붙은 PDF는 이용자가 원문을 편집할 때 태그정보 및 스타일시트 정보를 분석, 적용하여 만든 문서 태그 정보가 들어있는 PDF로 태그 붙은 PDF가 적용된 PDF 문서는 사용자가 지정한 태그및 스타일시트 정보에 따라 PDF 문서의 본문 텍스트 내용을 추출할 수있다.
+태그 붙은 PDF가 가지는 특성을 살펴보면 다음과 같다 기술규격에서 배재된 태그 붙은 PDF는 이용자가 원문을 편집할 때 태그정보 및 스타일시트 정보를 분석, 적용하여 만든 문서 태그 정보가 들어있는 PDF로 태그 붙은 PDF가 적용된 PDF 문서는 사용자가 지정한 태그및 스타일시트 정보에 따라 PDF 문서의 본문 텍스트 내용을 추출할 수있다.
 그래서 검색 텍스트 추출, TTS(Text To Speech) 텍스트 추출 등에 서 정확성을 보장 받을 수 있다.
 태그 붙은 PDF가 아닌 경우, 행끊김2)글자들에 대해 정확한 해석이 불가능하지만 태그 붙은 PDF는 행이 끊겨다음 줄로 넘어간 글자들에 대한 정확한 해석이 가능하다는 것이다.
 하지만 태그 정보를 PDF 문서에 유지하기 위해 많은 정보가 필요하며, 이는PDF 문서의 용량 증가 및 판독기의 프로세싱 증가를 초래한다 태그 붙은 PDF 적용 시 문제점으로는 원문의 태그 정보 및 스타일시트정보를 반영해야 하기 때문에 PDF 문서를 변환할 때 원문 편집 프로그램의 태그 및 스타일시트 정보를 얻을 수 있어야 하는데 글 편집기와기타 문서 편집기의 경우에는 태그 정보 및 스타일시트 정보를 얻을 수있는 어떤 방법도 제공하지 않으므로 태그 정보 및 스타일시트 정보를 얻어서 PDF 문서를 만드는 것이 원천적으로 불가능하다.
@@ -94,7 +94,7 @@ PDF/A-1의 “A”는 기록물 즉 Archive를 나타내며, “1”은 인쇄�
 예를 들면 XML 스키마 또는 DTD는 태그의 의미를 정의한 것으로 이에 해당되는데 서로간의 약속된 태그가 아닌, 사용자들이 임의로 적용한 태그의 경우는 의미해석이 불가능하므로 이런 경우 PDF 문서의 태그 정보는 의미 없는 데이터일 뿐이다.
 4) 이 문서유형 보존포맷의 세부규격은 ISO 19005-1:2005의 기술규격을 포함한다.
 국가기록원이 적용한 기술규격에 대한 설명은 [비고]에 기술된다.
-8파일 포맷 이슈들의 전반적인 사항과 규격에 적합한 파일들의 일반적 구조를 형성하는 기본 요소들에 대해 언급한다.
+파일 포맷 이슈들의 전반적인 사항과 규격에 적합한 파일들의 일반적 구조를 형성하는 기본 요소들에 대해 언급한다.
 6.1.2 파일 헤더(File header) 파일 헤더의 % 문자는 파일의 바이트 오프셋 0 에 있어야 한다.
 파일 헤더 다음 행은 % 문자 다음에 최소 4 문자(각 문자의 인코딩된 바이트 값은 십진수 127보다 커야 한다)를 포함한 설명이 있어야 한다.
 상세설명5) 파일 시작에 가까운 십진수 127보다 큰 인코딩된 바이트 값의 존재는 다양한 소프트웨어 툴들과 프로토콜에 의해 파일이 처리과정에서 보존되어야 할 8비트 이진(binary) 데이터를 포함하고 있음을 표시하기 위해 사용된다.
@@ -114,7 +114,7 @@ xref 키워드와 교차참조 서브섹션 헤더는 하나의 EOL 표시로 �
 각 문자는 0 - 9, A - F또는 a - f 범위안의 문자이다.
 6.1.7 스트림 객체(Stream objects) stream 키워드 바로 다음에는 CARRIAGE RETURN(0Dh)과 LINEFEED(0Ah)의 세트 또는 하나의 LINE FEED 문자가 나타나야 한다.endstream 키워드 앞에는 EOL 문자가 있어야 한다.
 스트림 사전에 명시된 Length 키의 값은 stream 키워드 다음의 LINEFEED 문자 이후부터 endstream 키워드 이전에 있는 EOL 문자 이전까지의 파일 바이트 숫자이다.
-상세설명 1 이 조건들은 스트림 내용의 끝과 관련해 가능한 모호함을 제거 10한다.
+상세설명 1 이 조건들은 스트림 내용의 끝과 관련해 가능한 모호함을 제거 한다.
 스트림 객체 사전은 F, FFilter, 또는 FDecodeParams 키들을 포함하지 않는다.
 상세설명 2 이 키들은 파일의 외부에 해당하는 문서 내용을 가리키는데 사용된다.
 이 키들의 명백한 금지는 외부 의존과 보존 노력을 복잡하게 하는 외부 내용을 금하는 암시적인 효과가 있다.
@@ -126,7 +126,7 @@ obj 그리고 endobj 키워드들 다음에는 EOL 문자가 있어야 한다.
 6.1.10 필터 LZWDecode 필터는 허용되지 않는다.
 상세설명 LZW 압축 알고리즘의 사용은 지적 재산권의 보호 대상이다.
 비고 ASCIIHexDecode, ASCII85Decode, FlateDecode , RunLengthDecode,CCITTFaxDecode, JBIG2Decode, DCTDecode 중에서 FlateDecode,CCITTFaxDecode, DCTDecode 필터만을 사용한다.
-6.1.11 내장 파일(Embedded files) 11파일 명세 사전(File specification dictionary)에는, PDF Reference 3.10.2에 정의된 것과 같이, EF 키를 사용하지 않는다.
+6.1.11 내장 파일(Embedded files) 파일 명세 사전(File specification dictionary)에는, PDF Reference 3.10.2에 정의된 것과 같이, EF 키를 사용하지 않는다.
 파일의 이름 사전(Namedictionary)에는 PDF Reference 3.6.3에 정의된 것과 같이 EmbeddedFiles 키를 사용하지 않는다.
 
 > **비고** 이 키들은 임의의 내용을 가진 파일들을 PDF 파일을 캡슐화하는데 사용된다.
@@ -139,7 +139,7 @@ obj 그리고 endobj 키워드들 다음에는 EOL 문자가 있어야 한다.
 ### 6.2 그래픽(Graphics)
 
 6.2.1일반 사항 규격에 적합한 파일과 판독기 모두에게 주어진 제한을 설명한다.
-이 제한들은 글꼴들과 상호작용적 요소들을 수반하지 않는 그래픽적인 표현 이슈들을 12다루기 위한 것이다.
+이 제한들은 글꼴들과 상호작용적 요소들을 수반하지 않는 그래픽적인 표현 이슈들을 다루기 위한 것이다.
 6.2.2 출력 의도(Output Intent) 규격에 따르는 파일은 PDF/A-1 OutputIntent를 사용해서 표현하고자 하는 장치의 색 특성들을 명시할 수 있다.
 PDF/A-1 OutputIntent는 PDFReference 9.10.4에 정의된 것 같이 파일의 OutputIntents열에 포함된OutputIntent 사전이며, S키의 값으로는GTS_PDFA1, DestOutputProfile 키의 값으로는 유효한 ICC 프로파일 스트림(Profile stream)을 가져야 한다.
 만약 파일의 OutputIntents 열이 하나 이상의 항목을 포함하고 있다면,DestOutputProfile키를 포함한 모든 항목들은 키의 값으로 동일한 간접객체(Indirect object, 유효한 ICC 프로파일 스트림)를 가지고 있어야 한다.
@@ -149,7 +149,8 @@ PDF/A-1 OutputIntent는 PDFReference 9.10.4에 정의된 것 같이 파일의 Ou
 규격에 따르는 파일은 ICCBased 칼라 스페이스,Uncalibrated 칼라 스페이스에서 제한한 내용을 제외하고 PDF Reference에 명시된 모든 칼라 스페이스를 사용할 수 있다.
 상세설명 6.2.3 에서 설명된 것 같이 장치-독립적인 방식으로 색을 명시하는 것은 규격에 적합한 파일이 가정 및 외부의 정보에 의존하지 않고, 색채계(colorimetric) 정의에 기반한 예측할 수 있는 색 표현을 가능하게 한다.
 또한 색채계 정의가 장치-의존적 색 데이터와 결합하는 방식도 제공한다.
-13비고 문서 전체에 걸쳐 DeviceRGBColorSpace를 사용하며, OutputIntent로sRGBIccProfile을 사용한다.
+
+> **비고** 문서 전체에 걸쳐 DeviceRGBColorSpace를 사용하며, OutputIntent로sRGBIccProfile을 사용한다.
 6.2.3.2 ICCBased 칼라 스페이스(ICCBased colour spaces) 모든 ICCBased 칼라 스페이스는 PDF Reference 4.5에서 설명한 것 같이ICC 프로파일 스트림으로 파일에 내장된다.
 규격에 따르는 판독기는 ICCBased 칼라 스페이스를 ICC 프로파일 명세에 서 명시한 것 같이 표현한다.
 그리고 ICC 프로파일 스트림 사전에 명시된Alternate 칼라 스페이스를 사용하지 않는다.
@@ -171,7 +172,7 @@ Intent 키의 사용은 6.2.9의 규칙에 규격에 따라야 한다.
 
 > **비고** 이미지 데이터는 이미지 스트림이나 인라인 이미지 형태로 파일에 내장되어 있다.
 6.2.5 폼 X객체(Form XObjects) Form XObject 사전은 다음을 포함 하지 않는다.
-- OPI 키 15- 값이PS인 Subtype2 키 - PS 키 상세설명 PDF 초기 버전에서 값이 PS인 Subtype2 키 그리고 PS키는 임의로 실행 가능한 포스트스크립트 코드 스트림을 정의하는데 사용되었는데, 이것은 신뢰하고 예측할 수 있는 표현을 방해하는 가능성이 있었다.
+- OPI 키 - 값이PS인 Subtype2 키 - PS 키 상세설명 PDF 초기 버전에서 값이 PS인 Subtype2 키 그리고 PS키는 임의로 실행 가능한 포스트스크립트 코드 스트림을 정의하는데 사용되었는데, 이것은 신뢰하고 예측할 수 있는 표현을 방해하는 가능성이 있었다.
 6.2.6 참조 X객체(Reference XObjects) 규격에 적합한 파일은 어떤 참조 X객체도 포함하지 않는다.
 상세설명 참조 X객체는 외부 PDF 파일들의 임의적 문서 내용이며, 외부 의 존도를 생성하여 보존 노력을 복잡하게 한다.
 6.2.7 포스트스크립트 X객체(PostScript XObjects) 규격에 따르는 파일은 어떤 포스트스크립트 X객체도 포함하지 않는다.
@@ -180,7 +181,7 @@ Intent 키의 사용은 6.2.9의 규칙에 규격에 따라야 한다.
 ExtGState 사전은 값이 Default이외의 TR2키를 포함하지 않는다.
 규격에 적합한 판독기는 ExtGState 사전의 어떤 경우의 HT키도 무시할 수 있다.
 RI 키의 사용은 6.2.9의 규칙에 따라야 한다.
-6.2.9 렌더링 의도(Rendering intents) 16렌더링 의도(Rendering intent)가 명시되면, 값은 아래와 같은 PDF ReferenceRelativeColormetric, AbsoluteColorimetric, Perceptual 또는 Saturation 에 정의된 4개의 값 중 하나여야 한다.
+6.2.9 렌더링 의도(Rendering intents) 렌더링 의도(Rendering intent)가 명시되면, 값은 아래와 같은 PDF ReferenceRelativeColormetric, AbsoluteColorimetric, Perceptual 또는 Saturation 에 정의된 4개의 값 중 하나여야 한다.
 
 > **비고** 기본 랜더링 의도의 값은RelativeColorimetric이다.
 6.2.10 컨텐츠 스트림(Content streams) 컨텐츠 스트림은 PDF Reference에 정의되지 않은 연산자는 포함하지 않는다.그 연산자가 호환 연산자인 BX/EX에 의해 괄호로 묶여 구분되어 있어도 마찬가지이다.
@@ -193,7 +194,7 @@ ri 연산자의 사용은 6.2.9의 규칙에 따라야 한다.
 ### 6.3 폰트(Fonts)
 
 6.3.1일반 사항 조건들이 의도하는 바는 규격에 따르는 파일의 문자 모양이 원래 생성된 대로 일치하는 것을 보장하고 문자 내용의 의미적 속성들의 복구를 허용하는 것이다.
-6.3.2 폰트 유형(Font types) 17규격에 적합한 파일에 사용된 모든 폰트들은 PDF Reference 5.5에 정의된 폰트 명세에 따라야 한다.
+6.3.2 폰트 유형(Font types) 규격에 적합한 파일에 사용된 모든 폰트들은 PDF Reference 5.5에 정의된 폰트 명세에 따라야 한다.
 복합 마스터 폰트는 Type 1 폰트의 특별한 경우로 간주한다.
 Type 1에 관해명백하게 명시된 모든 조건들은 복합 마스터 폰트에게 암시적으로 요구된다.상세설명 모든 폰트의 규격 적합성 정도를 확보하는 것은 파일 생성 프로그램의 책임이다.
 이 표준은 폰트의 규격 적합성 정도를 확인하는 방법을 규정하지 않는다.
@@ -204,7 +205,8 @@ Type 1에 관해명백하게 명시된 모든 조건들은 복합 마스터 폰�
 > **비고** 1 CMap은 Identity-H 만을 사용하고, CIDSystemInfo 사전에는 항상“/Registry (Adobe) /Ordering (Identity) /Suppliment 0"를 사용한다.
 6.3.3.2 CIDFonts 모든 Type 2 CIDFont들은 CIDFont 사전에 CIDToGIDMap 항목을 포함해야한다.
 이것은 PDF Reference의 표 5.13에서 설명된 것 같이 CID들에서 그리프 인덱스나 이름 식별자로의 스트림 매핑을 위해 필요하다.
-18비고 2 CIDFontType2의 경우 “/CIDToGID /Identity"만을 사용한다.
+
+> **비고** 2 CIDFontType2의 경우 “/CIDToGID /Identity"만을 사용한다.
 6.3.3.3 CMaps 규격에 적합한 파일에서 사용된 모든 CMap들은, Identity-H와 Identity-V를 제외하고,PDF Reference 5.6.4에 설명된 것 같이 그 파일에 포함된다.
 포함된CMap들은, CMap 사전의 WMode 항목의 정수 값이 포함된 CMap 스트림의 WMode 값과 동일해야 한다.
 
@@ -214,7 +216,7 @@ Type 1에 관해명백하게 명시된 모든 조건들은 복합 마스터 폰�
 - 페이지 객체의 Contents 스트림 - 폼 X객체의 스트림 - 폼 필드를 포함한 주석의 모양 스트림 - Type 3 폰트 글리프의 컨텐츠 스트림 - 타일(tiling) 패턴의 스트림 파일에 합법적으로 제한 없이, 전체 표현이 가능하게 포함될 수 있는 폰트만을 사용한다.
 규격에 적합한 모든 판독기들은 로컬에 상주, 대치 또는 흉내낸 폰트들 대신에 파일에 포함된 폰트들을 표현에 사용한다.
 
-> **비고** 페이지 객체의 컨텐츠 스트림에서만 폰트를 사용하며, CIDFontType0에 대해 "/FontFile3"을, CIDFontType2에 대해 “FontFile2"를 사용하며, 모 19든 폰트는 파일에 내장되어 있다.
+> **비고** 페이지 객체의 컨텐츠 스트림에서만 폰트를 사용하며, CIDFontType0에 대해 "/FontFile3"을, CIDFontType2에 대해 “FontFile2"를 사용하며, 모 든 폰트는 파일에 내장되어 있다.
 상세설명 1PDF Reference 5.2.5에서 논의된 것 같이, 문자 표현 모드 3은 그리프가 선을 긋거나, 채우지 않고 그리프 범위로 사용되지 않는 것을 명시한다.
 이 모드로만 참조되는 폰트는 표현되지 않으므로 포함되는 조건에서 제외된다.
 상세설명 2 14가지 표준 Type 1 폰트들은 6.3.4의 조건들로부터 제외되지않는다.
@@ -226,7 +228,7 @@ Type 3 폰트들은 PDF Reference 6.3.4의 조건들로부터 제외된다.
 상세설명 5 이 규격의 이 장은 폰트 저작권자의 특별한 동의에 합법성을 의 존하는 그런 폰트들의 포함 배제를 설명하고 있다.
 6.3.5 폰트 부분집합(Font subsets) 6.3.4에서 언급한 것 같이, 포함된 폰트 프로그램들은 규격에 따르는 파일이표현하기 위해 참조하는 모든 그리프들을 정의한다.
 Type 0 CIDFont와Type 1 그리고 TrueType 폰트 부분집합은, PDF Reference 5.5.3 에서 설명한것 같이 포함된 폰트 프로그램이 모든 적절한 그리프들을 정의한다면 사용될 수 있다.
-규격에 적합한 파일에서 참조되는 모든 Type 1 폰트 부분집합은, PDF 20Reference 표 5.18에서 설명한 것 같이, 폰트 기술 사전(Font descriptordictionary)에 폰트 부분집합에서 정의된 문자명을 목록화하는 CharSet 문자열을 포함한다.
+규격에 적합한 파일에서 참조되는 모든 Type 1 폰트 부분집합은, PDF Reference 표 5.18에서 설명한 것 같이, 폰트 기술 사전(Font descriptordictionary)에 폰트 부분집합에서 정의된 문자명을 목록화하는 CharSet 문자열을 포함한다.
 규격에 따르는 파일에서 참조되는 모든 CIDFont 부분집합은 PDF Reference표 5.20에서 설명한 것 같이, 폰트 기술어 사전(font descriptor dictionary)에 포함된 CIDFont 파일에 어느 CID들이 존재하는지 확인하는 CIDSet 스트림을 포함한다.
 
 > **비고** 사용된 모든 그리프에 대한 폰트 부분집합을 정의하여 파일에 내장하며, 윈도우 GDI 방식으로 파일을 변환함으로 포스트스크립트 폰트인Type 1 폰트를 사용하지 않는다.
@@ -236,7 +238,7 @@ Type 0 CIDFont와Type 1 그리고 TrueType 폰트 부분집합은, PDF Reference
 
 > **비고** 국가기록원 문서유형 보존포맷 PDF/A-1b 기반 포맷은 폰트 사전에서 사용된 모든 그리프의 너비정보를 W키를 통해 정의한다.
 상세설명 이 조건은 주어진 판독기가 Widths의 메트릭 또는 폰트 프로그램의 것 중 어느 것을 사용하는 것과 관계없이 예측할 수 있는 표현을 보장하기 위해 필요하다.
-6.3.7 문자 인코딩(Character encodings) 모든 non-symbolic 트루타입 폰트는 폰트 사전의 Encoding 항목의 값으로 21MacRomanEncoding 또는WinAnsiEncoding을 명시해야 한다.
+6.3.7 문자 인코딩(Character encodings) 모든 non-symbolic 트루타입 폰트는 폰트 사전의 Encoding 항목의 값으로 MacRomanEncoding 또는WinAnsiEncoding을 명시해야 한다.
 모든 symbolicTruetype 폰트는 폰트 사전에 Encoding 항목을 명시하지 않는다.
 그리고 폰트 프로그램의 “cmap” 표들은 정확히 하나의 인코딩을 포함한다.
 상세설명 이 조건은 PDF Reference 5.5.5에서 설명한 제안된 지침을 규범으로 만든다.
@@ -263,7 +265,7 @@ NoZoom과NoRotateflag들은 허용되어서, 일반적으로 사용되는 문자
 정의에 의하면, 문자 주석은, PDF Reference 8.4.5에 설명된것 같이, 플래그가 지정되지 않아도 NoZoom과 NoRotate의 행동을 보인다.
 이 플래그들의 값을 명백하게 지정하는 것은 주석사전 값과 판독기 행동과의 사이에 있을 수 있는 가능한 모호함을 없앤다.
 주석 사전은 PDF/A-1 출력의도 사전의 DestOutputProfile의 칼라 스페이스,6.2.2에서 정의 된 것과 같이, RGB가 아닌 한, C 배열 또는 IC 배열을 포함하지 않는다.
-상세설명 2 이 조항들은 주석에 모양 스트림(Appearance stream)외의 방법으로 사용된 장치 칼라 스페이스들이 PDF/A-1 출력의도에 의 24해 간접적으로 정의되는 것을 보장하려는 의도이다.
+상세설명 2 이 조항들은 주석에 모양 스트림(Appearance stream)외의 방법으로 사용된 장치 칼라 스페이스들이 PDF/A-1 출력의도에 의 해 간접적으로 정의되는 것을 보장하려는 의도이다.
 만약 주석 사전이 AP 키를 포함하다면, 값으로 정의하는 주석의 모양 사전은 N 키만을 포함하며 N 키의 값은 주석의 모양을 정의하는 스트림이다.
 상세설명 3 6.5.3의 모든 조항들은 폼 필드에 사용된 Widget 유형을 포함한모든 주석 유형에 적용된다.
 
@@ -276,7 +278,7 @@ NextPage, PrevPage, FirstPage 그리고 LastPage외의 지정된 action들은 �
 상호작용적 폼 필드(Interactive form fields)는 어떤 종류의 행위도 실행하지않는다.
 상세설명 1 멀티미디어 내용에 대한 지원은 이 규격의 범위가 아니다.ResetForm 행위는 표현되는 폼의 모양을 변화한다.ImportData 행위는 외부 파일로부터 폼 데이터를 가져온다.JavaScript 행위들은 신뢰하고 예측할 수 있는 표현을 방해할가능성이 있는 임의적 실행 코드를 허용한다.
 상세설명 2 상호작용적 폼 필드의 추가적 조건들은 6.9에 명시된다.
-6.6.2 트리거 이벤트(Trigger events) 위젯 주석 사전 또는 필드 사전은 추가행위 사전으로 AA항목을 포함하지 25않는다.
+6.6.2 트리거 이벤트(Trigger events) 위젯 주석 사전 또는 필드 사전은 추가행위 사전으로 AA항목을 포함하지 않는다.
 문서 카탈로그 사전은 추가행위 사전으로 AA항목을 포함하지 않는 다.
 상세설명 이 추가행위 사전들은 임의적 자바스크립트 행위들을 정의한다.AA항목의 명백한 금지는 외부 의존을 생성하고 그리고 보존 노력을 복잡하게 하는 자바스크립트 행위들을 허용하지 않는 암시적인효과가 있다.
 6.6.3 하이퍼텍스트 링크(Hypertext links) 규격에 적합한 상호작용적 판독기는 하이퍼링크들을 실행하지 않게 만드는 것을 선택할 수 있다.
@@ -290,7 +292,7 @@ NextPage, PrevPage, FirstPage 그리고 LastPage외의 지정된 action들은 �
 메타데이터는 파일의 생애주기 동안에 파일의 효과적인 관리를 위해 필수적이다.
 파일은 식별자 그리고 설명뿐 아니라 적절한 기술적 그리고 관리적 요소들을 설명하기 위해 메타데이터에 의존한다.
 이 결과로 규격에 적합한 파일의 생성프로그램들은 이 규격의 외부에서 정의한 다양한 도메인, 특정한 메타데이터조건들에 따라야할 수도 있다.
-이 장의 규격은 다양한 메타데이터 조건들을 26지원하는 구조화되고 일관된 틀을 약술한다.
+이 장의 규격은 다양한 메타데이터 조건들을 지원하는 구조화되고 일관된 틀을 약술한다.
 6.7.2 속성(Properties) 규격에 적합한 파일의 문서 카탈로그 사전은 Metadata 키를 포함한다.
 메타데이터 스트림을 형성하는 그 키의 값은 XMP Specification에 따른다.
 파일에 포함된 모든 메타데이터 속성들은, 6.7.3에서 정의된 것 같이, XMP 유사한항목이 없는 문서 정보 사전 항목들을 제외하고는 XMP 형식이어야 한다.XMP 형식으로 명시된 속성들은 XMP Specification 4에 정의된 미리 정의된스키마 또는 XMP Specification 4와 6.7.8에 따르는 확장 스키마를 사용한다.메타데이터 객체 스트림 사전은 Filter 키를 포함하지 않는다.
@@ -302,7 +304,7 @@ NextPage, PrevPage, FirstPage 그리고 LastPage외의 지정된 action들은 �
 만약 없다면, 미리정의된 XMP 스키마에 유사한 속성들을 가지고 있는 모든 항목들은, 표 1에 정의된 것 같이, 동등한 값들과 함께 XMP 형식으로 파일에 포함된다.
 표 1에 없는 모든 문서 정보 사전의 항목은 미리 정의된 XMP 스키마 속성을 사용해서 포함되지 않는다.
 상세설명 1 규격에 적합한 파일에 문서 정보 사전이 허용되기 때문에, 하나의 파일이 PDF/A-1 (ISO 19005-1) 그리고 PDF/X (ISO 15930-4,ISO 15930-6 [6] ) 등 모든 규격에 만족하는 것이 가능하다.
-27문서 정보 사전 항목들의 값과 유사한 XMP 속성들의 값은 동일하다.
+문서 정보 사전 항목들의 값과 유사한 XMP 속성들의 값은 동일하다.
 PDFText string 유형에서 XMP Text 유형으로 매핑되는 속성들에 값의 동일성은 문자들의 numeric ISO/IEC 10646-1 코드 포인트를 비교할 때 인코딩에 의존하지 않는 문자-대-문자에 기반을 둔다.
 
 > **비고** 문서 정보 사전에 Creator, Producer, CreationDate, ModDate를 정의하여 포함하며, 그 값은 XMP 메타데이터 항목과 일치한다.
@@ -312,12 +314,12 @@ PDFText string 유형에서 XMP Text 유형으로 매핑되는 속성들에 값�
 Author와 dc:creator 사이의 동일성은 문자들의 ISO/IEC 10646-1코드 포인트(code point)를 비교할 때 인코딩에 의존하지 않는 문자-대-문자에 기반을 둔다.
 보기 1 문서 정보 사전 항목: 문서 정보 사전 XMP 항목 PDF 종류 속성 XMP 종류Title text string dc:title Text Author text string dc:creator seq Text Subject text string dc:subject Text Keywords text string pdf:keywords Text Creator text string xmp:CreatorTool Text Producer text string pdf:Producer Text CreationDate date xmp:CreateDate Date ModDate date xmp:ModifyDate Date
 
-> **비고** 접두사 dc의 XML 네임스페이스 URI는 <http://purl.org/dc/elements/1.1/>; 접두사 pdf의 네임스페이스는 <http://ns.adobe.com/pdf/1.3/>; 그리고 접두사 xmp의 네임스페이스 URI는 <http://ns.adobe.com/xap/1.0/> 표1 - 문서 정보 사전과 XMP 속성 비교 28/Author (Peter, Paul and Mary) 는 XMP 속성과 동일하다: <dc:creator> <rdf:Seq> <rdf.:li>Peter, Paul, and Mary</rdf:li> </rdf:Seq> </dc:creator> Date 속성들은 년, 달, 일, 시, 분, 초로 나뉘는 시간적 요소들의 변하는-길이의 연속(sequence) 형식으로 구성된다.
+> **비고** 접두사 dc의 XML 네임스페이스 URI는 <http://purl.org/dc/elements/1.1/>; 접두사 pdf의 네임스페이스는 <http://ns.adobe.com/pdf/1.3/>; 그리고 접두사 xmp의 네임스페이스 URI는 <http://ns.adobe.com/xap/1.0/> 표1 - 문서 정보 사전과 XMP 속성 비교 /Author (Peter, Paul and Mary) 는 XMP 속성과 동일하다: <dc:creator> <rdf:Seq> <rdf.:li>Peter, Paul, and Mary</rdf:li> </rdf:Seq> </dc:creator> Date 속성들은 년, 달, 일, 시, 분, 초로 나뉘는 시간적 요소들의 변하는-길이의 연속(sequence) 형식으로 구성된다.
 PDF Reference 3.8.2에서 정의한 PDFdate 유형 그리고Date and Time Formats에서 정의한 XMP Date 종류 사이를 매핑하는 속성들은, 값의 동일성이, 협정 세계시(Coordinated UniversalTime, UTC)에 비교하여, 컴포넌트(component)-대-컴포넌트에 기반한다.
 보기 2 문서 정보 사전 항목들: /CreationDate (D:20040402) /ModDate (D:20040408091132-05‘00’) 는 XMP 속성들과 동일하다: <xmp:CreateDate>2004 02</xmp:CreateDate> <xmp:ModifyDate>2004 08T14:11:32Z</xmp:ModifyDate> 6.7.4 정규화(Normalization) 모든 XMP 스키마는 속성들에 적용될 수 있는 정규화 규칙을 정의한다.
 정규화 규칙들을 제공하는 스키마들에 정의된 모든 메타데이터 속성들은, 규격에 적합한 판독기들이 메타데이터의 교환을 쉽게 하고 일관된 해석을 위해 스키마들에 의해 정의된 정규화된 방법으로 속성 값들을 입력, 저장 그리고유지한다.
 6.7.5 XMP 헤더(XMP header) bytes와 encoding 속성들은 XMP 패킷(Packet)의 헤더에 사용되지 않는다.
-29상세설명 bytes와 encoding 속성 모두XMP Specification에서 제외되었다.
+상세설명 bytes와 encoding 속성 모두XMP Specification에서 제외되었다.
 6.7.6 파일 식별자(File identifiers) 규격에 따르는 파일은 파일의 특성, 분류 및 식별을 위해 하나 이상의 메타데이터 속성들을 가진다.
 이 규격의 이 장은 어떤 특정한 식별 방법도 요구하지 않는다.
 식별자들은 국제 표준 도서 번호(International Standard BookNumber, ISBN) [7] 또는 디지털 객체 식별자(Digital Object Identifier, DOI)와같이 외부에 기반을 둔다.
@@ -331,7 +333,7 @@ XMP 조건들과 이 규격의 이 장에 따르는 한, 어떤 식별 시스템
 - action, parameters, when 필드는 명시되어야 한다.
 - softwareAgent 필드는 명시하여야 한다.
 - instanceID 필드는 명시하지 않는다.
-30상세설명 1 접두사 xmpMM의 XML 네임스페이스 URI는 <http://ns.adobe.com/xap/1.0/mm/> 이다.
+상세설명 1 접두사 xmpMM의 XML 네임스페이스 URI는 <http://ns.adobe.com/xap/1.0/mm/> 이다.
 상세설명 2 특정한 감사 조건들이 있는 응용프로그램들은 미리 정의된 XMP스키마들에 정의된 것들 이외의 행위의 추가적 종류 또는 행위에 대한 추가적 상세정보를 기록할 필요가 있을 수 있다.
 행위의 추가적 종류의 예제는 손실압축(downsampling) 또는 폰트 대치와같이 문서의 모양을 변화시키는 것을 포함한다.
 추가적 상세정보의 예제는 행위를 실행하는 사람에 관한 식별자 또는 행위가 일어난환경을 포함한다.
@@ -353,21 +355,21 @@ XMP 메타데이터 속성들이 파일의 생애주기를 따라 이동하는 �
 상세설명 2 W3C XML 네임스페이스 권고 [8] 에 의하면, 네임스페이스URI들은 식별 목적만을 위한 것이며 실행가능한(actionable) 링크여야할 필요는 없다.
 이 규격의 이 장에서 XMP 확장 스키마의 네임스페이스 URI들은 실행가능한(actionable) 링크가 없다.
 이 링크들의 값을 알아내거나 또는 따라 가려는 시도는 유효한 웹 페이지의 결과를 주지 않는다.
-속성 값 종류 카테 고리 설명 pdfaSchema:schema Text 외부 스키마의 옵션 설명 pdfaSchema:namespa ceURI URI 외부 스키마 네임스페이스 URI pdfaSchema:prefix Text 외부 우선의(Preferred) 스키마 네이미스페이스 pre- pdfaSchema:property seq Property 내부 스키마 속성들의 설명 pdfaSchema:valueTyp e seq ValueType 내부 schema-specific 값 종류의 설명표2 - 확장 스키마 설명스키마 32표 3에 정의된 Property 타입은 스키마 속성의 설명을 포함한 XMP 구조이다.
+속성 값 종류 카테 고리 설명 pdfaSchema:schema Text 외부 스키마의 옵션 설명 pdfaSchema:namespa ceURI URI 외부 스키마 네임스페이스 URI pdfaSchema:prefix Text 외부 우선의(Preferred) 스키마 네이미스페이스 pre- pdfaSchema:property seq Property 내부 스키마 속성들의 설명 pdfaSchema:valueTyp e seq ValueType 내부 schema-specific 값 종류의 설명표2 - 확장 스키마 설명스키마 표 3에 정의된 Property 타입은 스키마 속성의 설명을 포함한 XMP 구조이다.
 필드 네임스페이스 URI는 <http://www.aiim.org/pdfa/ns/property>이다.
 필요한 필드 네임스페이스 접두사는 pdfaProperty이다.
 필드 이름 값 종류 설명 pdfaProperty:name 문자 속성 이름 pdfaProperty:valueType 자유 선택 문자 XMP Specification 4로 부터의 값 종류, 또는 포함된 PDF/A 값종류 확장 스키마 pdfaProperty:category Closed Choice of Text 속성 카테고리: 내부 또는 외부pdfaProperty:description 문자 속성 설명 표3 - PDF/A 속성 종류 스키마 pdfaProperty:valueType의 선호하는 값은 XMP Specification 2004, 4에서 정의한 non-deprecated 속성 값 종류들이다.
 배열 종류들은 컨테이너 종류(alt,bag 또는seq)가 앞에 있으며, 기본 종류와 하나의 공백 문자로 분리된다.
 표 4에 정의된 ValueType 유형은 포함된 확장 스키마에 의해 사용되지만XMP Specification 4에 정의되지 않은 모든 속성 값 유형의 설명을 포함한다.필드 네임스페이스 URI는 <http://www.aiim.org/pdfa/ns/type> 이다.
 필요한 네임스페이스 접두사는 pdfaType이다.
-필드 이름 값 종류 설명 pdfaType:type 문자 Property value type name pdfaType:=namespaceURI URI Property valute type fieldnamespace URI pdfaType:prefix 문자 Preferred value type fieldnamespace prefix pdfaType:description 문자 property value type의 설명 pdfaType:field seq Field structured field의 옵션 설명 표4 - PDF/A 값 유형 스키마 33표 5에 정의된 Field 유형은 속성 값 유형 필드의 설명을 포함한 XMP 구조이다.
+필드 이름 값 종류 설명 pdfaType:type 문자 Property value type name pdfaType:=namespaceURI URI Property valute type fieldnamespace URI pdfaType:prefix 문자 Preferred value type fieldnamespace prefix pdfaType:description 문자 property value type의 설명 pdfaType:field seq Field structured field의 옵션 설명 표4 - PDF/A 값 유형 스키마 표 5에 정의된 Field 유형은 속성 값 유형 필드의 설명을 포함한 XMP 구조이다.
 필드 네임스페이스 URI는 <http://www.aiim.org/pdfa/ns/field> 이다.
 필요한 네임스페이스 접두사는 pdfaField이다.
 6.7.9 검증(Validation) 모든 XMP 패킷의 모든 내용은 Extensible Markup Language(XML) 1.0(ThirdEdition), 2.1, 그리고 RDF/XML Syntax Specification(Revised), 7에서 정의한 것같이 체계화 된다.
 가능하다면, 파일 생성 프로그램이 규격에 따르는 파일을 생성 또는 다시 저장할 때, 그 파일의 XMP 패킷들의 모든 내용은 확인되어 야 한다.
 6.7.10 폰트 메타데이터(Font metadata) 포함된 모든 Type 0, Type 1, 또는 TrueType 폰트 프로그램들은, 포함된 폰트 파일 스트림 사전에 XMP 메타데이터 스트림이 값인 Metadata 항목을 포함한다.
 다음의 XMP 메타데이터 항목들을 제공해야 한다: xmp:TItle, 폰트의 font descriptor 사전으로 부터 FontName키의 값을 제공한다;xmpRights:Copyright, 저작권 문구를 제공한다; xmpRights:Marked,Boolean 값 true; xmpRights:Owner, 폰트의 합법적 소유자를 표현한다;xmpRights:UsageTerms, 폰트가 사용되는 라이센스 조건 문구를 제공한다.파일 생성 프로그램의 판단에 따라 추가적인 XMP 메타데이터가 포함될 수있다.
-필드 이름 값 종류 설명 pdfaField:name 문자 필드 이름 pdfaField:valueType 자유 선택 문자 XMP Specification 2004, 4로 부터의 필드 값 종류, 또는 포함된 PDF/A 값종류 확장 스키마 pdfaField:description 문자 필드 설명 표5 - PDF/A 필드 스키마 34상세설명 1 폰트 저작권 정보는 폰트 저작권 소유자의 지적 재산권의 정체성과 범위를 보존하는데 도움이 된다.
+필드 이름 값 종류 설명 pdfaField:name 문자 필드 이름 pdfaField:valueType 자유 선택 문자 XMP Specification 2004, 4로 부터의 필드 값 종류, 또는 포함된 PDF/A 값종류 확장 스키마 pdfaField:description 문자 필드 설명 표5 - PDF/A 필드 스키마 상세설명 1 폰트 저작권 정보는 폰트 저작권 소유자의 지적 재산권의 정체성과 범위를 보존하는데 도움이 된다.
 많은 폰트들이 저작권 그리고 라이센스 조건을 폰트 안에 포함하지만, 이것은 통합된 방식이 아니다.
 그러므로 규격에 적합한 파일에 저작권 문구의 명백한 표현이 요구된다.
 이것이 불필요한 정보일 수 도 있지만, 미래의 시스템이 폰트 프로그램의 특정한 내부 구조를 분석하는 기능을 가져야 하는 필요성을 미리 방지한다.
@@ -377,7 +379,7 @@ XMP 메타데이터 속성들이 파일의 생애주기를 따라 이동하는 �
 요구되는 스키마 네임스페이스 접두사는 pdfaid이다.
 pdfaid:part의 값은 파일이 따르는 규격의 부(part) 번호이다.
 만약 파일이수정된 부에 정의된 규격의 버전에 따른다면, pdfaid:amd의 값은 콜론(:)으로 분리된 수정 번호와 연도이다.
-속성 값 종류 카타 고리 설명 pdfaid:part 자유선택 정수 내부 PDF/A 버전 식별자 pdfaid:amd 자유선택 문자 내부 선택의 PDF/A 수정 식별자 pdfaid:conforman ce Closed Choice of Text 내부 PDF/A 적합성수준: A 또는 B표6 - PDF/A 식별자 스키마 35A 수준 적합성 파일은 pdfaid:conformance의 값을 A로 명시한다.
+속성 값 종류 카타 고리 설명 pdfaid:part 자유선택 정수 내부 PDF/A 버전 식별자 pdfaid:amd 자유선택 문자 내부 선택의 PDF/A 수정 식별자 pdfaid:conforman ce Closed Choice of Text 내부 PDF/A 적합성수준: A 또는 B표6 - PDF/A 식별자 스키마 A 수준 적합성 파일은 pdfaid:conformance의 값을 A로 명시한다.
 B 수준적합성 파일은 pdfaid:conformance의 값을B로 명시한다.
 pdfaid:part, pdfaid:amd, 그리고 pdfaid:confomance 속성들의 값들은 자체로는 이 규격에 적합한 지를 결정하지 않는다.
 적합성의 실제 결정은 조항 5에서 명시된 것 같이 실행된다.
@@ -394,14 +396,14 @@ B 수준 적합성은 6.8의 조건들을 무시할 수 있다.
 더욱이 이 조건들은 문서의 논리적 구조와 관련된 고수준의 의미 정보 복귀를 허용한다.
 PDF/A-1 생성 프로그램은 규격의 적합성을 위한 목적만으로 소스 자료에 명백히 또는 암시적으로 존재하지 않는 구조 또는 의미 정보를 추가하지 않는다.
 이런 정보의 예로는 구조 계층, 자연 언어 설계서, 대안의 설명, 비-문자 주석, 대체 문자 그리고 약자와 두문자어의 확장이다.
-36상세설명 파일의 생성 프로그램은 구조 또는 의미 정보를 적절한 확인없이자동 처리로 생성하는 것은 권하지 않는다.
+상세설명 파일의 생성 프로그램은 구조 또는 의미 정보를 적절한 확인없이자동 처리로 생성하는 것은 권하지 않는다.
 6.8.2 태그 붙은 PDF(Tagged PDF) 6.8.2.1일반 A 수준 적합성 파일은PDF Reference 9.7에서 태그 붙은 PDF(tagged PDF)을 위해 지정한 모든 조건들을 준수해야 한다.
 상세설명 태그 붙은 PDF는 문서 내용의 논리적 구조적 면을 명백히 선언하고 설명하는 규정을 정의한다.
 6.8.2.2 표시 정보 사전(Mark information dictionary) 문서 카탈로그 사전은 MarkInfo 사전을 포함한다.
 이 사전의 하나뿐인 항목,Marked는true 값을 가진다.
 상세설명 이 지정은 파일이 태그 붙은 PDF 규정에 적합하다는 것을 나타낸다.
 6.8.3 아티팩트(Artifacts) 6.8.3.1일반 난외표제(running head) 또는 페이지 번호 등의 페이지 매김 기능들, 각주규칙 또는 배경 화면 등의 편집 기능들, 그리고 절단선 표시 또는 색 막대등의 생산 지원 기능들은 PDF Reference 9.7.2에서 설명된 것과 같이, 각각페이지 매김, 레이아웃(layout), 그리고 페이지 아티팩트(Artifacts)라 명시한다.
-6.8.3.2 단어 분할(Word breaks) 37보통 간격 문자를 사용해서 단어 분할을 나타내는 언어들 그리고 스크립트시스템들은, 다음의 추가적 제한들이 적용된다.
+6.8.3.2 단어 분할(Word breaks) 보통 간격 문자를 사용해서 단어 분할을 나타내는 언어들 그리고 스크립트시스템들은, 다음의 추가적 제한들이 적용된다.
 문자열 보이기 안에서, 단어 분할은 문자열 보이기의 모든 단어들 사이에 하나 이상의 간격 문자의 존재로 명백히 표시된다.
 만약 단어가 문자열 보이기경계의 끝에 있으면, 하나 이상의 간격 문자가 문자열 보이기 끝에 추가된다.하나의 단어가 하나 이상의 문자열 보이기에 걸칠 수 있는 것에 주의한다.단어 분할(Word breaks)은 하나 이상의 간격 문자들의 명백한 존재만으로 표시되며, 문자열 보이기의 경계들에 의해 표시되지 않는다.
 단어 분할을 표시하기 위한 목적에서는, 둘 이상의 연속 간격 문자들은 의미적으로 하나의 간격 문자와 동일하다.
@@ -409,7 +411,7 @@ PDF/A-1 생성 프로그램은 규격의 적합성을 위한 목적만으로 소
 구조 계층의 각각의 구조 요소 사전은 StructElem 값을 가지고 있는 Type항목을 가지고 있다.
 규격에 적합한 파일의 생성 프로그램은 문서의 논리적 구조 계층을 가능한최소 단위로 포착하려고 시도한다.PDF Reference 9.7.4에 정의된 것 같이, 그룹핑 요소들, 블록 수준의 구조 요소들, 단락과 유사한 요소들, 리스트 요소들, 표 요소들, 인라인 수준의 구조 요소들, 링크 요소들 그리고 일러스트레이션 요소들의 표준 구조 유형들을 가능한 최대한 사용한다.
 상세설명 문서의 논리적 구조의 명백한 설명은 표현 또는 다른 데이터 포맷으로의 변환 등의 목적을 위한 문서의 완전한 의미 값의 복원 노력이 미래에는 중요하다는 것을 알게 될 것이다.
-6.8.3.4 구조 유형(Structure types) 38블록 수준(block-level) 구조 요소들의 정의는, PDF Reference 9.7.4에 설명된것 같이 엄격한 구조 패러다임을 따라야 한다.
+6.8.3.4 구조 유형(Structure types) 블록 수준(block-level) 구조 요소들의 정의는, PDF Reference 9.7.4에 설명된것 같이 엄격한 구조 패러다임을 따라야 한다.
 모든 비표준 구조 유형은, PDF Reference 9.7.4에 정의된 것 같이, 구조 트리루트의 롤맵(role map) 사전 안의 기능상 가장 동일한 표준 종류에 매핑된다.
 이 매핑은 간접적일 수 있다; 롤맵안에서 비표준 유형은 또 다른 비표준유형에 직접 매핑될 수 있다.
 하지만, 최종적으로 매핑은 표준 유형에서 끝나야 한다.
@@ -433,4 +435,4 @@ PDF/A-1 생성 프로그램은 규격의 적합성을 위한 목적만으로 소
 모든 폼 필드는 필드 데이터와 연계된 모양 사전을 가지고 있다.
 규격에 적합한 판독기는 폼 데이터와 상관없이 모양 사전에 따라 필드를 표현한다.
 상세설명 모양 사전의 필요는 폼의 신뢰할 수 있는 표현을 보증한다.
-41참고문헌 [1] Susan Sullivan, ”PDF/A Worldwide Collaboration to PreserveElectronic Documents,” US technical advisory group for the PDF/AISO standard. AIIM, Frequently Asked Questions (FAQs) ISO 19005-1:2005 PDF/A-1 [2] PDF Reference: Adobe Portable Document Format, Version 1.5, AdobeSystems Incorporated -4th edition. Available from Internet<http://partners.adobe.com/asn/acrobat/sdk/public/docs/PDFReference15_v6.pdf> [3] The Unicode Standard, Unicode Consortium. Available from Internet<http://www.unicode.org/versions/> [4] ISO 15930-6, Graphic technology - Prepress digital data exchange usingPDF - Part 6: Complete exchange of printing data suitable forcolour-managed workflows using PDF 1.4 (PDF/X-3) [5] ISO 2108, Information and documentation - International standardbook number (ISBN) [6] Namespaces in XML 1.1, W3C Recommendation, February 4, 2004.Available from Internet <http://www.w3.org/TR/2004/REC-xml-names11-20040204>
+참고문헌 [1] Susan Sullivan, ”PDF/A Worldwide Collaboration to PreserveElectronic Documents,” US technical advisory group for the PDF/AISO standard. AIIM, Frequently Asked Questions (FAQs) ISO 19005-1:2005 PDF/A-1 [2] PDF Reference: Adobe Portable Document Format, Version 1.5, AdobeSystems Incorporated -4th edition. Available from Internet<http://partners.adobe.com/asn/acrobat/sdk/public/docs/PDFReference15_v6.pdf> [3] The Unicode Standard, Unicode Consortium. Available from Internet<http://www.unicode.org/versions/> [4] ISO 15930-6, Graphic technology - Prepress digital data exchange usingPDF - Part 6: Complete exchange of printing data suitable forcolour-managed workflows using PDF 1.4 (PDF/X-3) [5] ISO 2108, Information and documentation - International standardbook number (ISBN) [6] Namespaces in XML 1.1, W3C Recommendation, February 4, 2004.Available from Internet <http://www.w3.org/TR/2004/REC-xml-names11-20040204>

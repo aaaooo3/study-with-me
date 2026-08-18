@@ -241,9 +241,13 @@ export default function QuizPage() {
         </div>
       )}
 
-      {revealed && (
+      {revealed ? (
         <button className="btn btn-primary btn-block" onClick={goNext}>
           {index + 1 < total ? '다음 문제' : '결과 보기'}
+        </button>
+      ) : (
+        <button className="btn btn-block" onClick={goNext}>
+          {index + 1 < total ? '모르겠어요 · 건너뛰기 →' : '모르겠어요 · 결과 보기'}
         </button>
       )}
     </div>

@@ -172,9 +172,13 @@ export default function SavedQuestionsPage() {
             </div>
           )}
 
-          {revealed && (
+          {revealed ? (
             <button className="btn btn-primary btn-block" onClick={goNext}>
               {index + 1 < queue.length ? '다음 문제' : '처음부터 다시'}
+            </button>
+          ) : (
+            <button className="btn btn-block" onClick={goNext}>
+              모르겠어요 · 건너뛰기 →
             </button>
           )}
         </>

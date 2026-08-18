@@ -84,9 +84,10 @@ const ANTONYM_RULES: AntonymRule[] = [
 function stripMarkdown(text: string): string {
   return text
     .replace(/^#{1,6} .*$/gm, ' ')
-    // Drop the source metadata blockquote ("> NAK 4 · 2025 · …", "> 법령 · 시행
-    // 2025 …") entirely — it's citation info, not study material.
-    .replace(/^> ?(?:NAK|법령) ·.*$/gm, ' ')
+    // Drop the source metadata blockquote ("> NAK 4 · 2025 · v2.3 · …",
+    // "> 법령 · 시행 2025 …") entirely — it's citation info, not study
+    // material. Guideline lines read "NAK <num> ·" and law lines "법령 ·".
+    .replace(/^> ?(?:NAK|법령)[ \d].*$/gm, ' ')
     .replace(/^> ?/gm, '')
     .replace(/^- /gm, '')
     .replace(/\*\*/g, '');
@@ -98,6 +99,11 @@ function stripMarkdown(text: string): string {
 // parenthetical clarifier "(예: 일반공공행정)" is merely stripped so the
 // surrounding definition survives.
 const EXAMPLE_MARKER = /예시|예제|＜예|<예|예＞|예>|(?:^|\s)보기(?:\s|\d)|올바른 예|잘못된 예|예\)/;
+
+// A standard designation ("NAK 3:2021(v2.4)") in a sentence means it's either
+// a leaked running header or an 인용표준 cross-reference list — citation noise,
+// not study content.
+const STANDARD_DESIGNATION = /NAK\s*[\d-]+\s*[: ]\s*(?:19|20)\d\d\s*\(v/;
 
 function stripParentheticalExamples(text: string): string {
   return text
@@ -141,6 +147,7 @@ function isCandidate(sentence: string): boolean {
   if (META_NARRATIVE_RE.test(sentence)) return false;
   if (ANAPHORA_START.test(sentence)) return false;
   if (EXAMPLE_MARKER.test(sentence)) return false;
+  if (STANDARD_DESIGNATION.test(sentence)) return false;
   if (hangulRatio(sentence) < 0.4) return false;
   return true;
 }
