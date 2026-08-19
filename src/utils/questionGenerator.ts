@@ -105,6 +105,13 @@ const EXAMPLE_MARKER = /예시|예제|＜예|<예|예＞|예>|(?:^|\s)보기(?:\
 // not study content.
 const STANDARD_DESIGNATION = /NAK\s*[\d-]+\s*[: ]\s*(?:19|20)\d\d\s*\(v/;
 
+// A sentence that only *introduces* a list or a 별표/그림 ("…은 다음과 같다",
+// "…은 별표 11과 같다") carries no judgeable claim on its own — the content is
+// in the list that follows. Fine as a fill-blank host if it has a blankable
+// number/term, but never as a bare OX ("~는 다음과 같다" → O tests nothing).
+const LIST_INTRO_END =
+  /(?:(?:다음|아래|위)(?:\s*각\s*호)?[과와에]?\s*(?:같다|같음|같습니다|따른다)|(?:별표|별지|서식|표|그림)\s*[\dA-Za-z가-힣.\-]*\s*[과와을를에]?\s*(?:같다|같음|따른다)|각\s*호와\s*같다)\s*[.]?\s*$/;
+
 function stripParentheticalExamples(text: string): string {
   return text
     .replace(/[(（]\s*예(?:시)?\s*[:：][^)）]*[)）]/g, '')
@@ -239,6 +246,10 @@ export function generateDrafts(text: string, maxDrafts = 80, sourceLabel?: strin
 
     const fillBlank = tryFillBlank(sentence, sentence);
     if (fillBlank) drafts.push(fillBlank);
+
+    // List/table-introducer sentences make no sense as a standalone OX, but a
+    // fill-blank on a real number/term inside them is still fair.
+    if (LIST_INTRO_END.test(sentence)) continue;
 
     const ox = tryOx(sentence, sentence, Boolean(fillBlank));
     if (ox) drafts.push(ox);
