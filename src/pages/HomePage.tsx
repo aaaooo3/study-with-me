@@ -40,14 +40,27 @@ export default function HomePage() {
 
       <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         <div>
-          <strong>🎲 바로 랜덤 퀴즈</strong>
+          <strong>⭐ 엄선 문제</strong>
           <div className="category-meta">
-            카테고리 설정 없이, 국가기록원 지침·법령에서 계속 랜덤으로 문제를 만들어서 보여줘요.
-            (유형·카테고리로 범위 선택 가능)
+            지침 원문을 읽고 직접 만든 문제예요. 함정 있는 OX, 오답 보기가 있는 객관식,
+            해설과 근거 조항까지 붙어 있어요.
           </div>
         </div>
-        <Link to="/random-quiz" className="btn btn-primary btn-block">
-          지금 시작
+        <Link to="/curated" className="btn btn-primary btn-block">
+          엄선 문제 풀기
+        </Link>
+      </div>
+
+      <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <div>
+          <strong>🎲 바로 랜덤 퀴즈</strong>
+          <div className="category-meta">
+            지침·법령 원문에서 규칙으로 자동 생성한 문제라 품질은 들쭉날쭉하지만, 양이 많아요.
+            보존기간·기한 같은 숫자 암기에 쓸 만해요.
+          </div>
+        </div>
+        <Link to="/random-quiz" className="btn btn-block">
+          랜덤 문제 풀기
         </Link>
       </div>
 
